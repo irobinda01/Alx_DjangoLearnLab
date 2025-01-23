@@ -8,7 +8,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import permission_required
 from .models import Book
-from .forms import BookForm, BookSearchForm
+from .forms import BookForm, ExampleForm
 
 @permission_required('your_app.can_view', raise_exception=True)
 def book_list(request):
@@ -48,7 +48,7 @@ def delete_book(request, pk):
 
 
 def search_books(request):
-    form = BookSearchForm(request.GET)
+    form = ExampleForm(request.GET)
     books = []
     if form.is_valid():
         title = form.cleaned_data.get('title')

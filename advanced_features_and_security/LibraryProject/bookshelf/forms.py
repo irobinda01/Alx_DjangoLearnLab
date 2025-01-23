@@ -6,7 +6,7 @@ class BookForm(forms.ModelForm):
         model = Book
         fields = ['title', 'author', 'published_date', 'isbn']
 
-class BookSearchForm(forms.Form):
+class ExampleForm(forms.Form):
     title = forms.CharField(max_length=255, required=False)
 
     def clean_title(self):
