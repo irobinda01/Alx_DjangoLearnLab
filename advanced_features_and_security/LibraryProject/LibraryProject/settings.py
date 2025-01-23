@@ -137,3 +137,21 @@ SESSION_COOKIE_SECURE = True  # Sends session cookies over HTTPS only
 CSP_DEFAULT_SRC = ["'self'"]
 CSP_SCRIPT_SRC = ["'self'", "https://trusted-scripts.com"]
 CSP_STYLE_SRC = ["'self'", "https://trusted-styles.com"]
+
+# Instruct browsers to only access the site over HTTPS
+SECURE_HSTS_SECONDS = 31536000  # 1 year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True  # Include subdomains in HSTS policy
+SECURE_HSTS_PRELOAD = True  # Enable preloading
+
+# Ensure cookies are transmitted over HTTPS
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+# Prevent the site from being embedded in iframes
+X_FRAME_OPTIONS = 'DENY'
+
+# Instruct the browser to use the content-type declared by the server
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+# Enable browser XSS filtering
+SECURE_BROWSER_XSS_FILTER = True
