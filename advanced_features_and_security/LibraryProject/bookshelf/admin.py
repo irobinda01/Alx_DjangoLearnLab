@@ -14,6 +14,7 @@ class BookAdmin(admin.ModelAdmin):
   # Add filter options for the publication year
   list_filter = ('publication_year',)
 
+admin.site.register(Book, BookAdmin)
 
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
@@ -32,4 +33,4 @@ class CustomUserAdmin(UserAdmin):
     search_fields = ('username', 'email')
     ordering = ('username',)
 
-admin.site.register(Book, BookAdmin, CustomUser, CustomUserAdmin)
+admin.site.register(CustomUser, CustomUserAdmin)
