@@ -9,7 +9,7 @@ from .models import Book
 from .forms import BookForm
 
 @permission_required('your_app.can_view', raise_exception=True)
-def view_articles(request):
+def book_list(request):
     book = Book.objects.all()
     return render(request, 'articles/view_articles.html', {'articles': book})
 
