@@ -5,6 +5,8 @@ from django.views.generic.detail import DetailView
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
+from django.contrib.auth.decorators import user_passes_test
+from django.http import HttpResponse
 
 # Create your views here.
 def list_books(request):
@@ -35,3 +37,30 @@ class LoginView(LoginView):
 
 class LogoutView(LogoutView):
     template_name = "relationship_app/logout.html"
+
+
+
+# Helper function to check user role
+def is_admin(user):
+    return user.profile.role == 'Admin'
+
+def is_librarian(user):
+    return user.profile.role == 'Librarian'
+
+def is_member(user):
+    return user.profile.role == 'Member'
+
+# Admin view
+@user_passes_test(is_admin)
+def admin_view(request):
+    return HttpResponse("Welcome, Admin!")
+
+# Librarian view
+@user_passes_test(is_librarian)
+def librarian_view(request):
+    return HttpResponse("Welcome, Librarian!")
+
+# Member view
+@user_passes_test(is_member)
+def member_view(request):
+    return HttpResponse("Welcome, Member!")
