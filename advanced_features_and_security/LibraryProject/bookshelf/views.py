@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Book
 from django.http import HttpResponse
+from .forms import ExampleForm
 
 # Create your views here.
 # Groups: Viewers, Editors, Admins
@@ -8,7 +9,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import permission_required
 from .models import Book
-from .forms import BookForm, ExampleForm
+from .forms import BookForm
 
 @permission_required('your_app.can_view', raise_exception=True)
 def book_list(request):
