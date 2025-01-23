@@ -155,3 +155,6 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 
 # Enable browser XSS filtering
 SECURE_BROWSER_XSS_FILTER = True
+
+# Enforce HTTPS for all requests
+SECURE_SSL_REDIRECT = True
