@@ -41,3 +41,21 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return self.username
+    
+# This script sets up groups and permissions for the Article model.
+
+class Article(models.Model):
+    title = models.CharField(max_length=255)
+    content = models.TextField()
+    published_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        permissions = [
+            ('can_view', 'Can view articles'),
+            ('can_create', 'Can create articles'),
+            ('can_edit', 'Can edit articles'),
+            ('can_delete', 'Can delete articles'),
+        ]
